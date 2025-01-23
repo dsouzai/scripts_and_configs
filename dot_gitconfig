@@ -1,0 +1,36 @@
+[user]
+        name = Irwin D'Souza
+        email = dsouzai.gh@gmail.com
+[core]
+        editor = vim
+        autocrlf = input
+        safecrlf = false
+
+[alias]
+        l = log --oneline --pretty=sparselog --abbrev-commit --graph --decorate --all
+        lme = log --oneline -n20 --pretty=sparselog --abbrev-commit --graph --decorate
+        linf = log --oneline --pretty=sparselog --abbrev-commit --graph --decorate
+        fixup = !sh -c 'git add . && git commit --fixup $@' -
+        squash = rebase -i --autosquash
+
+[pretty]
+    sparselog        = %C(auto,red)%h%C(auto,reset) -%C(auto)%d %C(auto,reset)%s %C(auto,green)<%an> %C(auto,reset)%C(auto,cyan)(%ad)%C(auto,reset)
+
+[merge]
+    keepBackup = false;
+    tool = BCompare.exe
+
+[mergetool "BCompare.exe"]
+    cmd = BCompare.exe ($wslpath -aw "$BASE") ($wslpath -aw "$LOCAL") ($wslpath -aw "$REMOTE") ($wslpath -aw "$MERGED")
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+
+[diff]
+    tool = BCompare.exe
+
+[difftool "BCompare.exe"]
+    cmd = BCompare.exe $(wslpath -aw "$LOCAL") $(wslpath -aw "$REMOTE")
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
