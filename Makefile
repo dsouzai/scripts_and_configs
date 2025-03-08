@@ -77,7 +77,7 @@ $(C_OBJECTS):
 	$(eval SOURCE = $(patsubst $(OBJ)/%.o,$(SRC)/%.c,$@))
 	$(MD) $(@D)
 	@echo "Compiling $(SOURCE)"
-	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $(patsubst $(OBJ)/%.o,$(SRC)/%.c,$@) -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $(SOURCE) -o $@
 
 $(CPP_OBJECTS):
 	$(eval SOURCE = $(patsubst $(OBJ)/%.o,$(SRC)/%.cpp,$@))
