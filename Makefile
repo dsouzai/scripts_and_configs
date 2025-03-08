@@ -73,16 +73,19 @@ $(OUTPUT)/$(BIN) : $(C_OBJECTS) $(CPP_OBJECTS)
 # Include all .d files
 -include $(C_DEPS) $(CPP_DEPS)
 
-$(C_OBJECTS): $(C_SOURCES)
+$(C_OBJECTS):
+	$(eval SOURCE = $(patsubst $(OBJ)/%.o,$(SRC)/%.c,$@))
 	$(MD) $(@D)
-	@echo "Compiling $<"
-	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+	@echo "Compiling $(SOURCE)"
+	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $(patsubst $(OBJ)/%.o,$(SRC)/%.c,$@) -o $@
 
-$(CPP_OBJECTS): $(CPP_SOURCES)
+$(CPP_OBJECTS):
+	$(eval SOURCE = $(patsubst $(OBJ)/%.o,$(SRC)/%.cpp,$@))
 	$(MD) $(@D)
-	@echo "Compiling $<"
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -MMD -c $< -o $@
+	@echo "Compiling $(SOURCE)"
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -MMD -c $(SOURCE) -o $@
 
 .PHONY: clean
 clean:
+	@echo "Removing $(OUTPUT) $(OBJ)"
 	$(RMD) $(OUTPUT) $(OBJ)
