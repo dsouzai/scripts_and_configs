@@ -1,7 +1,7 @@
 # define the compiler to use
-CXX 		= g++
-CC 			= gcc
-LD 			= $(CXX)
+CXX		= g++
+CC		= gcc
+LD		= $(CXX)
 
 # define any compile-time flags
 CXXFLAGS	= -Wfatal-errors -Wall -Wextra -Wconversion -Wshadow
@@ -9,13 +9,13 @@ CFLAGS		= $(CXXFLAGS)
 LFLAGS 		= $(CXXFLAGS)
 
 # Final binary
-BIN			= main
+BIN		= main
 
 # define output directory
 OUTPUT		= bin
 
 # define source directory
-SRC			= src
+SRC		= src
 
 # define include directory
 INCLUDE		= include
@@ -24,7 +24,7 @@ INCLUDE		= include
 #LIB		= lib
 
 # define object directory
-OBJ			= build
+OBJ		= build
 
 LIBRARIES	= -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 SOURCEDIRS	:= $(shell find $(SRC) -type d)
@@ -50,9 +50,9 @@ C_DEPS		:= $(C_OBJECTS:%.o=%.d)
 CPP_DEPS	:= $(CPP_OBJECTS:%.o=%.d)
 
 # define some utilities
-RM 			= rm -f
-RMD 		= rm -rf
-MD			= mkdir -p
+RM		= rm -f
+RMD		= rm -rf
+MD		= mkdir -p
 
 
 #
