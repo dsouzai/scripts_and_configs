@@ -36,7 +36,9 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
 set -g @plugin 'TechnicalDC/tmux-ayu-theme'
-
+# ayu them overrides
+set-window-option -g pane-border-style "fg=$ayu_green,bg=$ayu_black"
+set-window-option -g pane-active-border-style "fg=$ayu_green,bg=$ayu_black"
 
 
 
