@@ -1,6 +1,7 @@
 # Assumes https://github.com/tmux-plugins/tpm has been installed 
 
-set -g default-terminal "screen-256color"
+#set -g default-terminal "screen-256color"
+set-option -sa terminal-overrides ",xterm*:Tc"
 
 # remap prefix from 'C-b' to 'C-a'
 unbind C-b
