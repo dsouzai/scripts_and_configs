@@ -31,6 +31,9 @@ set -g visual-silence off
 setw -g monitor-activity off
 set -g bell-action none
 
+# vi keys
+setw -g mode-keys vi
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
