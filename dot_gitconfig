@@ -2,7 +2,7 @@
         name = Irwin D'Souza
         email = dsouzai.gh@gmail.com
 [core]
-        editor = vim
+        editor = nvim
         autocrlf = input
         safecrlf = false
 
@@ -14,23 +14,27 @@
         squash = rebase -i --autosquash
 
 [pretty]
-    sparselog        = %C(auto,red)%h%C(auto,reset) -%C(auto)%d %C(auto,reset)%s %C(auto,green)<%an> %C(auto,reset)%C(auto,cyan)(%ad)%C(auto,reset)
+    sparselog = %C(auto,red)%h%C(auto,reset) -%C(auto)%d %C(auto,reset)%s %C(auto,green)<%an> %C(auto,reset)%C(auto,cyan)(%ad)%C(auto,reset)
 
-[merge]
-    keepBackup = false;
-    tool = BCompare.exe
+[diff]
+#    tool = BCompare.exe
+#    tool = code
+    tool = nvim
 
-[mergetool "BCompare.exe"]
-    cmd = BCompare.exe ($wslpath -aw "$BASE") ($wslpath -aw "$LOCAL") ($wslpath -aw "$REMOTE") ($wslpath -aw "$MERGED")
+[difftool "BCompare.exe"]
+    cmd = BCompare.exe $(wslpath -aw "$LOCAL") $(wslpath -aw "$REMOTE")
     keepTemporaries = false
     trustExitCode = false
     keepBackup = false
 
-[diff]
-    tool = BCompare.exe
+[difftool "code"]
+    cmd = code --wait --diff "$LOCAL" "$REMOTE"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
 
-[difftool "BCompare.exe"]
-    cmd = BCompare.exe $(wslpath -aw "$LOCAL") $(wslpath -aw "$REMOTE")
+[difftool "nvim"]
+    cmd = nvim -d "$LOCAL" "$REMOTE"
     keepTemporaries = false
     trustExitCode = false
     keepBackup = false
